@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "65aa04332e228c6cbfdb091e"
+  },
+  "name": "ashin",
+  "age": 21,
+  "email": "ashinawm@gmail.com",
+  "number": 1234567890
+},
+{
+  "_id": {
+    "$oid": "65ade3d0729bdc26536bc2b0"
+  },
+  "Name": "Rahul",
+  "age": 21,
+  "email": "rahul21@gmail.com",
+  "number": 987654321
+},
+{
+  "_id": {
+    "$oid": "65b88cf40e6c787b12cf23cb"
+  },
+  "name": "Ashin",
+  "email": "example123@gmail.com",
+  "mobile": "1234567890",
+  "createPass": "newpassword123",
+  "age": "199"
+}]

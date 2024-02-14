@@ -1,0 +1,342 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groceries Archives - Organic Store</title>
+    <link rel="shortcut icon" href="/user/favi.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <style>
+        a {
+            text-decoration: none;
+            color: #797979;
+        }
+
+
+        h2 {
+            font-size: 4rem;
+            color: rgb(93, 168, 23);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <%- include("navbar") %>
+
+        <!-- section 1 -->
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="/home">Home</a>
+                    <span style="color: #797979;">/ Groceries</span>
+                    <h2 class="mt-2">Groceries</h2>
+                    <p class="mt-5" style="font-size: 1.2rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla dignissim, velit et luctus interdum, est quam scelerisque tellus, eget luctus mi diam
+                        vitae erat. Praesent porttitor lacus vitae dictum posuere. Suspendisse elementum metus ac dolor
+                        tincidunt, eu imperdiet nisi dictum.</p>
+                    <div class="row mt-5">
+                        <div class="col-lg-6">
+                            <p style="font-size: 1.2rem;">Showing 1–9 of 10 results</p>
+                        </div>
+                        <div class="col-lg-6" style="display: flex; justify-content: end;">
+                            <div class="dropdown">
+                                <button style="border: 1px dotted black;" class="btn px-5 py-3 dropdown-toggle"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Default sorting
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Sort by populariy</a>
+                                    <a class="dropdown-item" href="#">Sort by average rating</a>
+                                    <a class="dropdown-item" href="#">Sort by latest</a>
+                                    <a class="dropdown-item" href="#">Sort by price: low to high</a>
+                                    <a class="dropdown-item" href="#">Sort by price: high to low</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- products -->
+
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/s2p1.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Assorted Coffee</h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£35.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/j2.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Cashew Buttere</h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£25.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/j3.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Diabetic Cookies</h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£25.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/j5.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Fresh Organic Honey</h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£34.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/sani.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Hand Sanitizer
+
+                            </h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£17.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/g2.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Handpicked Red Chillies
+                            </h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£19.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/s2p4.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Natural Extracted Edible Oil
+                            </h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£25.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/g1.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Organic Face Scrub</h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£17.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                    <div class="card " style="width: 13rem; border: none; ">
+                        <img class="card-img-top" src="/user/j6.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
+                            <h6 class="card-text">Pulses From Organic Farm
+                            </h6>
+                            <span class="grade"><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <span><span class="material-symbols-outlined">
+                                    grade
+                                </span></span>
+                            <p style="font-weight: 900;">£34.00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-12"  style="display: flex; justify-content: center;">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="Groceries2">2</a></li>
+                            <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- footer -->
+
+        <%- include('footer') %>
+
+
+
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>
