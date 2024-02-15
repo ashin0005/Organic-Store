@@ -82,19 +82,22 @@
                           <h6 class="fw-semibold mb-0">Product name</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Category</h6>
+                          <h6 class="fw-semibold mb-0">Image</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Quantity</h6>
+                          <h6 class="fw-semibold mb-0">Category</h6>
                         </th>
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Price</h6>
                         </th>
                         <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Discount</h6>
+                        </th>
+                        <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Description</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Image</h6>
+                          <h6 class="fw-semibold mb-0">Review</h6>
                         </th>
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Edit</h6>
@@ -103,33 +106,54 @@
                           <h6 class="fw-semibold mb-0">Delete</h6>
                         </th>
                       </tr>
-                    </thead>
+                    </thead>  
 
                     <tbody>
-                      <% products.forEach(product=> { %>
+                      <% pro.forEach(products=> { %>
 
                         <tr>
                           <td class="border-bottom-0">
                             <h6 class="fw-semibold mb-0">1</h6>
                           </td>
                           <td class="border-bottom-0">
-                            <p class="mb-0 fw-normal"><%= product.productName %></p>
-                          </td>
-                          <td class="border-bottom-0">
-                            <p class="mb-0 fw-normal">category1</p>
-                          </td>
-                          <td class="border-bottom-0">
-                            <p class="mb-0 fw-normal">5</p>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0 fs-4">$20</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <p class="mb-0 fw-normal">best product ever</p>
+                            <p class="mb-0 fw-normal">
+                              <%= products.productName %>
+                            </p>
                           </td>
                           <td class="border-bottom-0">
                             <h6 class="fw-semibold mb-0 fs-4"><img src="../images/products/" alt="product image"
                                 width="50"></h6>
+
+                            <!-- <p class="mb-0 fw-normal">
+                              <%= products.image %>
+                            </p> -->
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.category %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0 fs-4">
+                              <%= products.price %>
+                            </h6>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.discountAmount %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.description %>
+                            </p>
+
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.review %>
+                            </p>
+
                           </td>
                           <td class="border-bottom-0">
                             <a href="admin-product.html"><span><i

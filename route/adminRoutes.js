@@ -12,12 +12,12 @@ router.get('/admin-category', (req, res) => {
 // router.get('/admin-product', (req, res) => {
 //     res.render('admin/admin-product');
 // });
-router.get('/admin-order', (req, res) => {
-    res.render('admin/admin-order');
-});
-router.get('/admin-customer', (req, res) => {
-    res.render('admin/admin-customer');
-});
+// router.get('/admin-order', (req, res) => {
+//     res.render('admin/admin-order');
+// });
+// router.get('/admin-customer', (req, res) => {
+//     res.render('admin/admin-customer');
+// });
 router.get('/admin-marketing', (req, res) => {
     res.render('admin/admin-marketing');
 });

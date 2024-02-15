@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,16 +11,15 @@
 
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
-  data-navbarbg="skin6" data-sidebartype="full"
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
-<!-- including the sidebar,navbar -->
-<%- include ("admin-nav.ejs") %>
+    <!-- including the sidebar,navbar -->
+    <%- include ("admin-nav.ejs") %>
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
             <h1 class="fw-semibold mb-4">Customer</h1>
-      <!-- table begin -->
+            <!-- table begin -->
             <div class="card w-100">
               <div class="card-body p-3">
                 <h5 class="card-title fw-semibold mb-4">Customers Details</h5>
@@ -70,61 +70,88 @@
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0"> 1</h6></td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">Abin</p>                         
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">male</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">26-01-2000</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">9966885577</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">North Po</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">kochi</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">near Metro station</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">Ernakulam</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">659865</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">abin22@gmail.com</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">abin22@</p>
-                        </td>
-                        <!-- <td class="border-bottom-0">
+                      <% cus.forEach(user=> { %>
+                        <tr>
+                          <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0"> 1</h6>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.name %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.gender %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.dob %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.mob %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.address %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.city %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.landmark %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.state %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.pincode %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.emailid %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= user.password %>
+                            </p>
+                          </td>
+                          <!-- <td class="border-bottom-0">
                           <button class="btn btn-light btn-edit"><i class="ti ti-edit"></i></button>
                           <button class="btn btn-primary btn-save" style="display: none;">Save</button>
                         </td> -->
-                        <td class="border-bottom-0">
-                          <button class="btn btn-light btn-edit" ><i class="ti ti-edit" ></i></button>
-                          <button class="btn btn-primary btn-save" style="display: none;" >Save</button>
-                        </td>
-                      </tr>                    
+                          <td class="border-bottom-0">
+                            <button class="btn btn-light btn-edit"><i class="ti ti-edit"></i></button>
+                            <button class="btn btn-primary btn-save" style="display: none;">Save</button>
+                          </td>
+                        </tr>
+                        <% }); %>
+
                     </tbody>
 
                   </table>
                 </div>
               </div>
             </div>
-<!-- table end -->
+            <!-- table end -->
           </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 
   <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
@@ -135,4 +162,5 @@
   <script src="/admin/libs/simplebar/dist/simplebar.js"></script>
   <script src="/admin/js/dashboard.js"></script>
 </body>
+
 </html>
