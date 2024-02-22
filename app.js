@@ -2,7 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 
 const app = express();
-const port = 4000;
+const port = 8000;
 
 //MongoDB connection URL
 const { MongoClient } = require('mongodb');
@@ -48,14 +48,12 @@ app.get('/admin/admin-product', async (req, res) => {
 
 
 
-
-
 app.get('/admin/admin-customer', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('organicStore');
         const collection = db.collection('user');
-        
+
         const cus = await collection.find().toArray();
         res.render('admin/admin-customer', { cus });
     } finally {
@@ -78,6 +76,61 @@ app.get('/admin/admin-order', async (req, res) => {
         await client.close();
     }
 });
+
+
+
+app.get('/admin/admin-category', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('category');
+
+        const cate = await collection.find().toArray();
+        res.render('admin/admin-category', { cate });
+    } finally {
+        await client.close();
+    }
+});
+
+app.get('/home', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const pro = await collection.find().toArray();
+        res.render('user/index', { pro });
+    }
+    finally {
+        await client.close();
+    }
+});
+
+
+
+
+
+app.post('/add-product', async (req, res) => {
+    try {
+        const { pro, cat, pri, dispri, qua, img, dis, revi } = req.body;
+
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const result = await collection.insertOne({ productName: pro, image: img, category: cat, price: pri, discountAmount: dispri, review: revi, discription: dis, quantity: qua });
+        console.log('Success',result);
+        res.status(201).send("product added succesfuly");
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error in adding product");
+    }
+
+
+});
+
+
+
 
 
 

@@ -26,9 +26,9 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- including the sidebar,navbar -->
-    
+
     <%- include ("admin-nav.ejs") %>
-    
+
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
@@ -53,23 +53,32 @@
                 </form>
               </div>
             </div>
+            <div class="row">
+              <% cate.forEach(category=> { %>
 
-            <!-- Category card -->
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="card">
-                <img src="/admin/images/category/" class="card-img-top category-image" alt="No image selected">
-                <div class="card-body">
-                  <h5 class="card-title">category 1</h5>
-                  <a href="admin-category.html" class="btn btn-primary"><i class="ti ti-edit"></i></a>
-                  <a href="admin-category.html" class="btn btn-danger"><i class="ti ti-trash"></i></a>
+                <!-- Category card -->
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                  <div class="card">
+                    <img src="/admin/images/category/" class="card-img-top category-image" alt="No image selected">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= category.category_name %>
+                      </h5>
+                      <a href="admin-category.html" class="btn btn-primary"><i class="ti ti-edit"></i></a>
+                      <a href="admin-category.html" class="btn btn-danger"><i class="ti ti-trash"></i></a>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                <% }); %>
+
+
             </div>
 
           </div>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 
   <script src="/admin/libs/jquery/dist/jquery.min.js"></script>

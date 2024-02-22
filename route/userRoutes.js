@@ -5,9 +5,9 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.render('user/login');
 });
-router.get('/home', (req, res) => {
-    res.render('user/index');
-});
+// router.get('/home', (req, res) => {
+//     res.render('user/index');
+// });
 router.get('/about', (req, res) => {
     res.render('user/about');
 });

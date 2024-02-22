@@ -73,6 +73,8 @@
 
         <div class="container-fluid">
             <div class="row mt-5">
+        <% pro.forEach(products=> { %>
+
                 <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
                     <div class="card " style="width: 13rem; border: none; ">
                         <img class="card-img-top" src="/user/g1.jpg" alt="Card image cap">
@@ -98,59 +100,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-                    <div class="card " style="width: 13rem; border: none; ">
-                        <img class="card-img-top" src="/user/j6.jpg" alt="Card image cap">
-                        <div class="card-body text-center">
-                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
-                            <h6 class="card-text">Pulses From Organic Farm
-                                e</h6>
-                            <span class="grade"><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <p style="font-weight: 900;">£15.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-                    <div class="card " style="width: 13rem; border: none; ">
-                        <img class="card-img-top" src="/user/j7.jpg" alt="Card image cap">
-                        <div class="card-body text-center">
-                            <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
-                            <h6 class="card-text">Wheat From Organic Farms</h6>
-                            <span class="grade"><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <p style="font-weight: 900;">£25.00</p>
-                        </div>
-                    </div>
-                </div>
+                
             
             </div>
+        <% }); %>
+
         </div>
         <br>
         <div class="container ">

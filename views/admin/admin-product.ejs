@@ -19,8 +19,8 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
-            <h1 class="fw-semibold mb-4">Product</h1>
-            <div class="card">
+            <h1 class="fw-semibold mb-4">Product List</h1>
+            <!-- <div class="card">
               <div class="card-body">
                 <form method="POST" enctype="multipart/form-data">
                   <div class="row mb-3">
@@ -65,7 +65,7 @@
                   <a href="admin-product.html" class="btn btn-danger">Reset</a>
                 </form>
               </div>
-            </div>
+            </div> -->
 
             <!-- table begin -->
             <div class="card w-100">
@@ -106,14 +106,19 @@
                           <h6 class="fw-semibold mb-0">Delete</h6>
                         </th>
                       </tr>
-                    </thead>  
+                    </thead>
 
                     <tbody>
+                      <span style="color: white;">
+                        <%= a=1 %>
+                      </span>
                       <% pro.forEach(products=> { %>
 
                         <tr>
                           <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">1</h6>
+                            <h6 class="fw-semibold mb-0">
+                              <%= a %>
+                            </h6>
                           </td>
                           <td class="border-bottom-0">
                             <p class="mb-0 fw-normal">
@@ -164,7 +169,8 @@
                                   class="ti ti-trash btn btn-outline-danger"></i></span></a>
                           </td>
                         </tr>
-                        <% }); %>
+                        <% a++ %>
+                          <% }); %>
                     </tbody>
 
                   </table>
