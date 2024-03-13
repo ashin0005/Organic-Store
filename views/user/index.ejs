@@ -205,37 +205,44 @@
       <div class="row p-3">
         <% pro.forEach(products=> { %>
 
-        <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-          <div class="card " style="width: 13rem; border: none; ">
-            <a href="productPage"><img class="card-img-top" src="/user/s2p1.jpg" alt="Card image cap"></a>
-            <div class="card-body text-center">
-              <p class="card-title" style="color: gray; font-size: .8rem;"><%= products.category %></p>
-              <h6 class="card-text"><%= products.productName %></h6>
-              <span class="grade"><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <p style="font-weight: 900;"><%= products.price %></p>
-              <a href="">
-                <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
-                  CART</button>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+            <div class="card " style="width: 13rem; border: none; ">
+              <a href="productPage"><img class="card-img-top" src="admin/images/products/<%= products.image %>"
+                  alt="Card image cap"></a>
+              <div class="card-body text-center">
+                <p class="card-title" style="color: gray; font-size: .8rem;">
+                  <%= products.category %>
+                </p>
+                <h6 class="card-text">
+                  <%= products.productName %>
+                </h6>
+                <span class="grade"><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <p style="font-weight: 900;">
+                  ₹<%= products.price %>/-
+                </p>
+                <a href="">
+                  <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
+                    CART</button>
+              </div>
+              </a><br>
             </div>
-            </a><br>
           </div>
-        </div>
-        
-        <% }); %>
+
+          <% }); %>
 
       </div>
       <div class="row mt-5">
@@ -373,7 +380,7 @@
           <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
 
             <div class="card " style="width: 13rem; border: none; ">
-              <img class="card-img-top" src="/user/s2p1.jpg" alt="Card image cap">
+              <img class="card-img-top" src="admin/images/products/<%= products.image %>" alt="Card image cap">
               <div class="card-body text-center">
                 <p class="card-title" style="color: gray; font-size: .8rem;">
                   <%= products.category %>
@@ -396,7 +403,7 @@
                       grade
                     </span></span>
                   <p style="font-weight: 900;">
-                    <%= products.price %>
+                    ₹<%= products.price %>/-
                   </p>
                   <a href="">
                     <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO

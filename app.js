@@ -1,8 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const multer = require('multer');
+const fs = require('fs');
+
+// -----------------------------------------------------
+
+
 
 const app = express();
-const port = 8000;
+const port = 7000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('public')); // assuming your images are in the 'public' folder
 
 //MongoDB connection URL
 const { MongoClient } = require('mongodb');
@@ -106,28 +117,111 @@ app.get('/home', async (req, res) => {
     }
 });
 
-
-
-
-
-app.post('/add-product', async (req, res) => {
+app.get('/Everything', async (req, res) => {
     try {
-        const { pro, cat, pri, dispri, qua, img, dis, revi } = req.body;
-
+        await client.connect();
         const db = client.db('organicStore');
         const collection = db.collection('products');
 
-        const result = await collection.insertOne({ productName: pro, image: img, category: cat, price: pri, discountAmount: dispri, review: revi, discription: dis, quantity: qua });
-        console.log('Success',result);
-        res.status(201).send("product added succesfuly");
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Error in adding product");
+        const every = await collection.find().toArray();
+        res.render('user/Everything', { every });
     }
-
-
+    finally {
+        await client.close();
+    }
 });
+app.get('/Everything2', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const every2 = await collection.find().toArray();
+        res.render('user/Everything2', { every2 });
+    }
+    finally {
+        await client.close();
+    }
+});
+app.get('/Groceries', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const grocery = await collection.find().toArray();
+        res.render('user/Groceries', { grocery });
+    }
+    finally {
+        await client.close();
+    }
+});
+app.get('/Groceries2', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const grocery2 = await collection.find().toArray();
+        res.render('user/Groceries2', { grocery2 });
+    }
+    finally {
+        await client.close();
+    }
+});
+app.get('/Juice', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const juice = await collection.find().toArray();
+        res.render('user/Juice', { juice });
+    }
+    finally {
+        await client.close();
+    }
+});
+
+
+
+
+// Set up multer middleware for handling file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/admin/images/products'); // Specify the destination folder for uploaded images
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname); // Ensure unique filenames
+    }
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/addproduct', upload.single('image'), async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const { productName, category, price, discountAmount, review, description, quantity } = req.body;
+        const image = req.file.filename; // multer adds the 'file' property to req
+        // const images = req.file ? req.file.filename : null; // Check if a file was uploaded
+        console.log(productName, image, category, price, discountAmount, review, description, quantity);
+
+        const myobj = { productName, image, category, price, discountAmount, review, description, quantity };
+        await collection.insertOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/admin/admin-addproduct'); // Redirect after successfull insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+
 
 
 

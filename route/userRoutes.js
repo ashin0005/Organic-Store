@@ -1,4 +1,4 @@
-const express = require('express');
+    const express = require('express');
 const router = express.Router();
 
 
@@ -14,21 +14,21 @@ router.get('/about', (req, res) => {
 router.get('/contact', (req, res) => {
     res.render('user/contact');
 });
-router.get('/Juice', (req, res) => {
-    res.render('user/Juice');
-});
-router.get('/Groceries', (req, res) => {
-    res.render('user/Groceries');
-});
-router.get('/Everything', (req, res) => {
-    res.render('user/Everything');
-});
-router.get('/Everything2', (req, res) => {
-    res.render('user/Everything2');
-});
-router.get('/Groceries2', (req, res) => {
-    res.render('user/Groceries2');
-});
+// router.get('/Juice', (req, res) => {
+//     res.render('user/Juice');
+// });
+// router.get('/Groceries', (req, res) => {
+//     res.render('user/Groceries');
+// });
+// router.get('/Everything', (req, res) => {
+//     res.render('user/Everything');
+// });
+// router.get('/Everything2', (req, res) => {
+//     res.render('user/Everything2');
+// });
+// router.get('/Groceries2', (req, res) => {
+//     res.render('user/Groceries2');
+// });
 router.get('/cart', (req, res) => {
     res.render('user/cart');
 });
