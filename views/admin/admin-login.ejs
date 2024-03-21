@@ -1,11 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin-Login</title>
   <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
-  <link rel="stylesheet" href="/admin/css/styles.min.css"/>
+  <link rel="stylesheet" href="/admin/css/styles.min.css" />
+  <style>
+    * {
+      user-select: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,26 +31,29 @@
                 <h1 class="text-center">Login</h1>
                 <form method="post">
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <label for="exampleInputEmail1" class="form-label">Email ID</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      name="ADemail">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="ADpassword">
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
-                      <input class="form-check-input" style="background-color: #72a339;" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <input class="form-check-input" style="background-color: #72a339;" type="checkbox" value=""
+                        id="flexCheckChecked" checked>
                       <label class="form-check-label text-dark" for="flexCheckChecked">
                         Remeber this Device
                       </label>
                     </div>
                     <a class=" fw-bold" href="" style="color: #72a339;">Forgot Password?</a>
                   </div>
-                  <a href="/admin/admin-dashboard" class="btn text-light w-100 py-8 fs-4 mb-4 rounded-2" style="background-color: #72a339;" name="submitl">Sign In</a>
+                  <button class="btn text-light w-100 py-8 fs-4 mb-4 rounded-2" style="background-color: #72a339;">Sign
+                    In</button>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Didn't have an account?</p>
-                    <a class="fw-bold ms-2" href="admin-register" style="color: #72a339;">Create an account</a>
+                    <a class=" fw-bold ms-2" href="admin-register" style="color: #72a339;">Create an account</a>
                   </div>
                 </form>
               </div>
@@ -58,4 +67,5 @@
   <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
   <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

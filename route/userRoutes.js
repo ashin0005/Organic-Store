@@ -1,8 +1,11 @@
-    const express = require('express');
+const express = require('express');
 const router = express.Router();
 
 
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
+//     res.render('user/demo');
+// });
+router.get('/login', (req, res) => {
     res.render('user/login');
 });
 // router.get('/home', (req, res) => {
@@ -38,9 +41,7 @@ router.get('/productPage', (req, res) => {
 router.get('/registration', (req, res) => {
     res.render('user/registration');
 });
-// router.get('/login', (req, res) => {
-//     res.render('user/login');
-// });
+
 
 
 module.exports = router;

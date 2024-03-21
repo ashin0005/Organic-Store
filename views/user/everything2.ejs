@@ -1,3 +1,4 @@
+
 <html lang="en">
 
 <head>
@@ -13,6 +14,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
     <style>
+         * {
+      user-select: none;
+    }
         a {
             text-decoration: none;
             color: #797979;
@@ -73,48 +77,61 @@
 
         <div class="container-fluid">
             <div class="row mt-5">
-        <% every2.forEach(products=> { %>
+                <% every2.forEach(products=> { %>
 
-                <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-                    <div class="card " style="width: 13rem; border: none; ">
-                        <img class="card-img-top" src="admin/images/products/<%= products.image %>" alt="Card image cap">
-                        <div class="card-body text-center">
-                            <p class="card-title" style="color: gray; font-size: .8rem;"><%= products.category %></p>
-                            <h6 class="card-text"><%= products.productName %></h6>
-                            <span class="grade"><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <span><span class="material-symbols-outlined">
-                                    grade
-                                </span></span>
-                            <p style="font-weight: 900;"><%= products.price %></p>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
+                        <div class="card " style="width: 13rem; border: none; ">
+                            <img class="card-img-top" src="admin/images/products/<%= products.image %>"
+                                alt="Card image cap">
+                            <div class="card-body text-center">
+                                <p class="card-title" style="color: gray; font-size: .8rem;">
+                                    <%= products.category %>
+                                </p>
+                                <h6 class="card-text">
+                                    <%= products.productName %>
+                                </h6>
+                                <!-- <span class="grade"><span class="material-symbols-outlined">
+                                        grade
+                                    </span></span>
+                                <span><span class="material-symbols-outlined">
+                                        grade
+                                    </span></span>
+                                <span><span class="material-symbols-outlined">
+                                        grade
+                                    </span></span>
+                                <span><span class="material-symbols-outlined">
+                                        grade
+                                    </span></span>
+                                <span><span class="material-symbols-outlined">
+                                        grade
+                                    </span></span> -->
+                                <p style="font-weight: 900;">
+                                    ₹<%= products.price %>/-
+                                </p>
+                                <a href="">
+                                    <button class="btn px-4 text-light"
+                                        style="background-color: #72a339; font-size: .7rem;">ADD TO
+                                        CART</button>
+                                </a>
+
+                            </div>
+                            <br>
                         </div>
                     </div>
-                </div>
-                
-            
-            </div>
-        <% }); %>
 
+                    <% }); %>
+
+            </div>
         </div>
         <br>
         <div class="container ">
             <div class="row">
-                <div class="col-lg-12"  style="display: flex; justify-content: center;">
+                <div class="col-lg-12" style="display: flex; justify-content: center;">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="Everything">1</a></li>
-                            <li class="page-item"><a class="page-link" href="Everthing2">2</a></li>
-                            
+                            <li class="page-item"><a class="page-link" href="Everything">Previous</a></li>
+
+
                         </ul>
                     </nav>
 

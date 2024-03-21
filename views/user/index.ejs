@@ -14,6 +14,10 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
   <style>
+    * {
+      user-select: none;
+    }
+
     nav {
       background-color: white;
     }
@@ -210,13 +214,13 @@
               <a href="productPage"><img class="card-img-top" src="admin/images/products/<%= products.image %>"
                   alt="Card image cap"></a>
               <div class="card-body text-center">
-                <p class="card-title" style="color: gray; font-size: .8rem;">
+                <p class="card-title" style="color: gray; font-size: .8rem;" name="prdCate">
                   <%= products.category %>
                 </p>
-                <h6 class="card-text">
+                <h6 class="card-text" name="prdName">
                   <%= products.productName %>
                 </h6>
-                <span class="grade"><span class="material-symbols-outlined">
+                <!-- <span class="grade"><span class="material-symbols-outlined">
                     grade
                   </span></span>
                 <span><span class="material-symbols-outlined">
@@ -230,15 +234,21 @@
                   </span></span>
                 <span><span class="material-symbols-outlined">
                     grade
-                  </span></span>
-                <p style="font-weight: 900;">
+                  </span></span> -->
+                <p style="font-weight: 900;" name="prdPrice">
                   ₹<%= products.price %>/-
                 </p>
-                <a href="">
-                  <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
+                <form method="post" action="addToCart">
+                  <input type="hidden" name="prdCate" value="<%= products.category %>">
+                  <input type="hidden" name="prdName" value="<%= products.productName %>">
+                  <input type="hidden" name="prdPrice" value="<%= products.price %>">
+                  <button type="submit" class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;"
+                    name="addCart">ADD TO
                     CART</button>
+                </form>
+                <br>
+
               </div>
-              </a><br>
             </div>
           </div>
 
@@ -378,141 +388,52 @@
         <% pro.forEach(products=> { %>
 
           <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-
             <div class="card " style="width: 13rem; border: none; ">
-              <img class="card-img-top" src="admin/images/products/<%= products.image %>" alt="Card image cap">
+              <a href="productPage"><img class="card-img-top" src="admin/images/products/<%= products.image %>"
+                  alt="Card image cap"></a>
               <div class="card-body text-center">
-                <p class="card-title" style="color: gray; font-size: .8rem;">
+                <p class="card-title" style="color: gray; font-size: .8rem;" name="prdCate">
                   <%= products.category %>
                 </p>
-                <%= products.productName %>
-                  <h6 class="card-text"></h6>
-                  <span class="grade"><span class="material-symbols-outlined">
-                      grade
-                    </span></span>
-                  <span><span class="material-symbols-outlined">
-                      grade
-                    </span></span>
-                  <span><span class="material-symbols-outlined">
-                      grade
-                    </span></span>
-                  <span><span class="material-symbols-outlined">
-                      grade
-                    </span></span>
-                  <span><span class="material-symbols-outlined">
-                      grade
-                    </span></span>
-                  <p style="font-weight: 900;">
-                    ₹<%= products.price %>/-
-                  </p>
-                  <a href="">
-                    <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
-                      CART</button>
+                <h6 class="card-text" name="prdName">
+                  <%= products.productName %>
+                </h6>
+                <!-- <span class="grade"><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span>
+                <span><span class="material-symbols-outlined">
+                    grade
+                  </span></span> -->
+                <p style="font-weight: 900;" name="prdPrice">
+                  ₹<%= products.price %>/-
+                </p>
+                <form method="post" action="addToCart">
+                  <input type="hidden" name="prdCate" value="<%= products.category %>">
+                  <input type="hidden" name="prdName" value="<%= products.productName %>">
+                  <input type="hidden" name="prdPrice" value="<%= products.price %>">
+                  <button type="submit" class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;"
+                    name="addCart">ADD TO
+                    CART</button>
+                </form>
+                <br>
+
               </div>
-              </a><br>
             </div>
-
-
           </div>
+
           <% }); %>
 
       </div>
-      <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-          <div class="card" style="width: 13rem; border: none;">
-            <img class="card-img-top" src="/user/juice.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-              <p class="card-title" style="color: gray; font-size: .8rem;">Juice</p>
-              <h6 class="card-text">Orange Juice
-              </h6>
-              <div>
-                <span class="material-symbols-outlined">
-                  grade
-                </span>
-                <span class="material-symbols-outlined">
-                  grade
-                </span>
-                <span class="material-symbols-outlined">
-                  grade
-                </span>
-                <span class="material-symbols-outlined">
-                  grade
-                </span>
-                <span class="material-symbols-outlined">
-                  grade
-                </span>
-              </div>
-              <p style="font-weight: 900;">£18.00</p>
-              <a href="">
-                <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
-                  CART</button>
-            </div>
-            </a><br>
-          </div>
-        </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-          <div class="card" style="width: 13rem; border: none;">
-            <img class="card-img-top" src="/user/sani.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-              <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
-              <h6 class="card-text">Hand Sanitizer</h6>
-              <span class="grade"><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <p style="font-weight: 900;">£19.00</p>
-              <a href="">
-                <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
-                  CART</button>
-            </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
-          <div class="card " style="width: 13rem; border: none;">
-            <img class="card-img-top" src="/user/s2p3.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-              <p class="card-title" style="color: gray; font-size: .8rem;">Groceries</p>
-              <h6 class="card-text">Red Chillies
-              </h6>
-              <span class="grade"><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <span><span class="material-symbols-outlined">
-                  grade
-                </span></span>
-              <p style="font-weight: 900;">£25.00</p>
-              <a href="">
-                <button class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;">ADD TO
-                  CART</button>
-            </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    </div> -->
+      <hr>
 
       <!-- section 6 -->
 

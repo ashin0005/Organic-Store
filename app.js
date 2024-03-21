@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const multer = require('multer');
 const fs = require('fs');
-
+const bcrypt = require('bcrypt');
 // -----------------------------------------------------
 
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.static('public')); // assuming your images are in the 'public' folder
 
 //MongoDB connection URL
-const { MongoClient } = require('mongodb');
+const { MongoClient, Collection } = require('mongodb');
 
 // mongoose.connect('mongodb://localhost:27017/organicStore')
 //     .then(() => {
@@ -38,6 +38,7 @@ app.use(express.static('public'));
 // import routes
 const adminRoutes = require('./route/adminRoutes');
 const userRoutes = require('./route/userRoutes');
+const { register } = require('module');
 
 // use routes 
 app.use('/admin', adminRoutes);
@@ -116,6 +117,19 @@ app.get('/home', async (req, res) => {
         await client.close();
     }
 });
+app.get('/', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const pro = await collection.find().toArray();
+        res.render('user/demo', { pro });
+    }
+    finally {
+        await client.close();
+    }
+});
 
 app.get('/Everything', async (req, res) => {
     try {
@@ -185,6 +199,48 @@ app.get('/Juice', async (req, res) => {
 
 
 
+// Adding categories
+
+const Categstorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/admin/images/category'); // Specify the destination folder for uploaded images
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname); // Ensure unique filenames
+    }
+});
+
+const Cupload = multer({ 
+    storage: Categstorage,
+    fileField: 'image' // Specify the field name for the uploaded file
+});
+
+app.post('/addcate', Cupload.single('image'), async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('category');
+
+        const { categname, categimg } = req.body;
+        const image = req.file.filename; // multer adds the 'file' property to req
+        // const images = req.file ? req.file.filename : null; // Check if a file was uploaded
+        console.log(categname, categimg);
+
+        const myobj = { categname, categimg };
+        await collection.insertOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/admin/admin-category'); // Redirect after successfull insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+
+
+
 
 // Set up multer middleware for handling file uploads
 const storage = multer.diskStorage({
@@ -220,6 +276,203 @@ app.post('/addproduct', upload.single('image'), async (req, res) => {
         await client.close();
     }
 });
+
+
+
+// <------------ user- register ------------>
+
+
+
+app.post('/registration', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('user');
+
+        const { FirstName, LastName, age, number, email, password } = req.body;
+
+        console.log(FirstName, LastName, age, number, email, password);
+
+        const myDetails = { FirstName, LastName, age, number, email, password };
+        await collection.insertOne(myDetails);
+
+        console.log("1 document inserted");
+        res.redirect('/login'); // Redirect after successfull insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+
+
+// <------- user-Login-------->
+
+
+
+app.post('/login', async (req, res) => {
+    const { Uemail, Upassword } = req.body;
+    console.log('Input email:', Uemail);
+    console.log('Input password:', Upassword);
+
+
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('user');
+
+        const user = await collection.findOne({ email: Uemail }); // Changed 'email' to 'Uemail'
+        console.log('User found:', user);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        console.log('Stored password:', user.password);
+
+        if (Upassword !== user.password) {
+            return res.redirect('/login');
+        } else {
+            return res.redirect('/home');
+        }
+
+
+
+    } catch (error) {
+        res.status(500).send('Error logging in');
+    }
+});
+
+
+
+//Display profile name after user login 
+app.get('/navbar', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('user');
+
+        const Uname = await collection.find().toArray();
+        res.render('user/home', { Uname });
+    } catch (error) {
+        console.error("Error:", error);
+    } finally {
+        await client.close();
+    }
+});
+
+
+
+
+// <------------ admin- register ------------>
+
+
+
+app.post('/admin/admin-register', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('admin');
+
+        const { ADFirstName, ADLastName, ADage, ADnumber, ADemail, ADpassword } = req.body;
+
+        const myDetails = { ADFirstName, ADLastName, ADage, ADnumber, ADemail, ADpassword };
+
+        await collection.insertOne(myDetails);
+
+        console.log("1 document inserted");
+        res.redirect('/admin/admin-login'); // Redirect after successfull insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+
+
+// <------- admin-Login-------->
+
+
+
+app.post('/admin/admin-login', async (req, res) => {
+    const { ADemail, ADpassword } = req.body;
+    console.log('Input email:', ADemail);
+    console.log('Input password:', ADpassword);
+
+
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('admin');
+
+        const admin = await collection.findOne({ ADemail: ADemail }); // Changed 'email' to 'ADemail'
+        console.log('User found:', admin);
+
+        if (!admin) {
+            return res.status(404).send('User not found');
+        }
+
+        console.log('Stored password:', admin.ADpassword);
+
+        if (ADpassword !== admin.ADpassword) {
+            return res.redirect('/admin/admin-login');
+        } else {
+            return res.redirect('/admin/admin-dashboard');
+        }
+
+
+
+    } catch (error) {
+        res.status(500).send('Error logging in');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// cart -------------------------->
+
+
+app.post('/addToCart', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('cart');
+
+        const { prdCate, prdName, prdPrice } = req.body;
+
+        // console.log(addCart);
+
+        const myCart = { prdCate, prdName, prdPrice };
+        await collection.insertOne(myCart);
+
+        console.log("1 document inserted");
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+
 
 
 

@@ -8,6 +8,10 @@
   <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
   <link rel="stylesheet" href="/admin/css/styles.css" />
   <style>
+    * {
+      user-select: none;
+    }
+
     .category-image {
       height: 200px;
       /* Set your desired height here */
@@ -35,21 +39,21 @@
             <h1 class="fw-semibold mb-4">Category</h1>
             <div class="card">
               <div class="card-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" action="/addcate" enctype="multipart/form-data">
                   <!-- Add a hidden input field for catid -->
-                  <input type="hidden" name="catid" value="">
+                  <input type="hidden" name="catid">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Category Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      name="catname" value="">
+                      name="categname">
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Category Image</label>
-                    <input type="file" class="form-control" id="exampleInputPassword1" name="catimg"> <br>
+                    <input type="file" class="form-control" id="exampleInputPassword1" name="image"> <br>
                     <img src="/admin/images/category/" alt="" width="100">
                   </div>
-                  <button type="submit" class="btn btn-primary" name="submitc">Submit</button>
-                  <a href="admin-category.html" class="btn btn-danger">Reset</a>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="/admin/admin-category" class="btn btn-danger">Reset</a>
                 </form>
               </div>
             </div>
@@ -59,13 +63,13 @@
                 <!-- Category card -->
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <div class="card">
-                    <img src="/admin/images/category/" class="card-img-top category-image" alt="No image selected">
+                    <img src="/admin/images/category/<%= category.catename %>" class="card-img-top category-image" alt="No image selected">
                     <div class="card-body">
                       <h5 class="card-title">
-                        <%= category.category_name %>
+                        <%= category.catename %>
                       </h5>
-                      <a href="admin-category.html" class="btn btn-primary"><i class="ti ti-edit"></i></a>
-                      <a href="admin-category.html" class="btn btn-danger"><i class="ti ti-trash"></i></a>
+                      <a href="/admin/admin-category" class="btn btn-primary"><i class="ti ti-edit"></i></a>
+                      <a href="admin/admin-category" class="btn btn-danger"><i class="ti ti-trash"></i></a>
                     </div>
                   </div>
                 </div>
