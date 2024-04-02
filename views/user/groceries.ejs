@@ -81,8 +81,7 @@
 
                     <div class="col-lg-4 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
                         <div class="card " style="width: 13rem; border: none; ">
-                            <img class="card-img-top" src="admin/images/products/<%= products.image %>"
-                                alt="Card image cap">
+                            <a href="productPage"><img class="card-img-top" src="admin/images/products/<%= products.image %>" alt="Card image cap"></a>
                             <div class="card-body text-center">
                                 <p class="card-title" style="color: gray; font-size: .8rem;">
                                     <%= products.category %>
@@ -106,11 +105,14 @@
                                         grade
                                     </span></span> -->
                                 <p style="font-weight: 900;">₹<%= products.price %>/-</p>
-                                <a href="">
-                                    <button class="btn px-4 text-light"
-                                        style="background-color: #72a339; font-size: .7rem;">ADD TO
-                                        CART</button>
-                                </a>
+                                <form method="post" action="addToCart">
+                                    <input type="hidden" name="prdCate" value="<%= products.category %>">
+                                    <input type="hidden" name="prdName" value="<%= products.productName %>">
+                                    <input type="hidden" name="prdPrice" value="<%= products.price %>">
+                                    <button type="submit" class="btn px-4 text-light" style="background-color: #72a339; font-size: .7rem;"
+                                      name="addCart">ADD TO
+                                      CART</button>
+                                  </form>
                             </div>
                             <br>
                         </div>

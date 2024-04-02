@@ -196,6 +196,19 @@ app.get('/Juice', async (req, res) => {
         await client.close();
     }
 });
+app.get('/productPage', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const prdPage = await collection.find().toArray();
+        res.render('user/productPage', { prdPage });
+    }
+    finally {
+        await client.close();
+    }
+});
 
 
 
@@ -210,7 +223,7 @@ const Categstorage = multer.diskStorage({
     }
 });
 
-const Cupload = multer({ 
+const Cupload = multer({
     storage: Categstorage,
     fileField: 'image' // Specify the field name for the uploaded file
 });
@@ -432,22 +445,6 @@ app.post('/admin/admin-login', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // cart -------------------------->
 
 
@@ -474,10 +471,21 @@ app.post('/addToCart', async (req, res) => {
 
 
 
+// display cart
 
+app.get('/navbar', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('cart');
 
-
-
+        const cartItems = await collection.find().toArray();
+        res.render('user/navbar', { cartItems });
+    }
+    finally {
+        await client.close();
+    }
+});
 
 
 

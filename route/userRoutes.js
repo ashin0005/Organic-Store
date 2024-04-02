@@ -32,14 +32,17 @@ router.get('/contact', (req, res) => {
 // router.get('/Groceries2', (req, res) => {
 //     res.render('user/Groceries2');
 // });
-router.get('/cart', (req, res) => {
-    res.render('user/cart');
-});
-router.get('/productPage', (req, res) => {
-    res.render('user/productPage');
-});
+// router.get('/cart', (req, res) => {
+//     res.render('user/cart');
+// });
+// router.get('/productPage', (req, res) => {
+//     res.render('user/productPage');
+// });
 router.get('/registration', (req, res) => {
     res.render('user/registration');
+});
+router.get('/cart', (req, res) => {
+    res.render('user/cart');
 });
 
 

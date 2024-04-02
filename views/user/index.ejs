@@ -97,7 +97,6 @@
   </style>
 
 
-  </style>
 </head>
 
 <body>
@@ -207,6 +206,8 @@
       </div>
 
       <div class="row p-3">
+        
+
         <% pro.forEach(products=> { %>
 
           <div class="col-lg-3 col-md-6 col-sm-6 col-6" style="display: flex; justify-content: center;">
@@ -398,21 +399,6 @@
                 <h6 class="card-text" name="prdName">
                   <%= products.productName %>
                 </h6>
-                <!-- <span class="grade"><span class="material-symbols-outlined">
-                    grade
-                  </span></span>
-                <span><span class="material-symbols-outlined">
-                    grade
-                  </span></span>
-                <span><span class="material-symbols-outlined">
-                    grade
-                  </span></span>
-                <span><span class="material-symbols-outlined">
-                    grade
-                  </span></span>
-                <span><span class="material-symbols-outlined">
-                    grade
-                  </span></span> -->
                 <p style="font-weight: 900;" name="prdPrice">
                   ₹<%= products.price %>/-
                 </p>
