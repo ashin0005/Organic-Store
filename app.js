@@ -473,14 +473,14 @@ app.post('/addToCart', async (req, res) => {
 
 // display cart
 
-app.get('/navbar', async (req, res) => {
+app.get('/cart', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('organicStore');
         const collection = db.collection('cart');
 
         const cartItems = await collection.find().toArray();
-        res.render('user/navbar', { cartItems });
+        res.render('user/cart', { cartItems });
     }
     finally {
         await client.close();

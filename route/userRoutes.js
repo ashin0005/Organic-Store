@@ -41,9 +41,9 @@ router.get('/contact', (req, res) => {
 router.get('/registration', (req, res) => {
     res.render('user/registration');
 });
-router.get('/cart', (req, res) => {
-    res.render('user/cart');
-});
+// router.get('/cart', (req, res) => {
+//     res.render('user/cart');
+// });
 
 
 
