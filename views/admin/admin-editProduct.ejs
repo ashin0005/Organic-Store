@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin-EditProduct</title>
+  <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/admin/css/styles.min.css" />
+  <style>
+     * {
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <%- include ("admin-nav.ejs") %>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="fw-semibold mb-4">Edit Product</h1>
+            <div class="card">
+              <div class="card-body">
+                <form method="POST" action="/addproduct" enctype="multipart/form-data">
+                  <div class="row mb-3">
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <label class="form-label">Product Name</label>
+                      <input type="text" class="form-control" required name="productName">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                      <label class="form-label">Product Image</label>
+                      <input type="file" class="form-control" required name="image">
+                      <!-- <img src="../images/products/" alt="" width="100"> -->
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                      <label class="form-label">Category</label>
+                      <select id="disabledSelect" class="form-select" required name="category">
+                        <option>Category select</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="veg">veg</option>
+                        <option value="juice">juice</option>
+                        <option value="groceries">groceries</option>
+                        <option value="cosmetics">cosmetics</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4 col-md-8 col-sm-8">
+                      <label class="form-label">Product Price</label>
+                      <input type="number" class="form-control" required name="price">
+                    </div>
+                    <div class="col-lg-4 col-md-8 col-sm-8">
+                      <label class="form-label">Discount price</label>
+                      <input type="number" class="form-control" required name="discountAmount">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-lg-3 col-md-5 col-sm-5">
+                      <label class="form-label">review</label>
+                      <textarea class="form-control" id="productDescription" name="review" rows="2"
+                        cols="50"></textarea>
+                    </div>
+                    <div class="col-lg-5 col-md-7 col-sm-7">
+                      <label class="form-label">Product Description</label>
+                      <textarea class="form-control" id="productDescription" required name="description" rows="2"
+                        cols="50"></textarea>
+                    </div>
+                    <div class="col-lg-4 col-md-7 col-sm-7">
+                      <label class="form-label">Product Quantity</label>
+                      <input type="number" class="form-control" required name="quantity">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="admin-addproduct" class="btn btn-danger">Reset</a>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin/js/sidebarmenu.js"></script>
+  <script src="/admin/js/app.min.js"></script>
+  <script src="/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/admin/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/admin/js/dashboard.js"></script>
+</body>
+
+</html>

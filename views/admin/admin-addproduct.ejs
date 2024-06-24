@@ -27,11 +27,11 @@
             <h1 class="fw-semibold mb-4">Add Product</h1>
             <div class="card">
               <div class="card-body">
-                <form method="POST" action="/addproduct" enctype="multipart/form-data">
+                <form method="POST" action="/admin-addproduct" enctype="multipart/form-data">
                   <div class="row mb-3">
                     <div class="col-lg-8 col-md-8 col-sm-8">
                       <label class="form-label">Product Name</label>
-                      <input type="text" class="form-control" required name="productName">
+                      <input type="text" class="form-control" required name="productName" >
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                       <label class="form-label">Product Image</label>
@@ -53,11 +53,11 @@
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-8">
                       <label class="form-label">Product Price</label>
-                      <input type="number" class="form-control" required name="price">
+                      <input type="number" class="form-control" required name="price" >
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-8">
                       <label class="form-label">Discount price</label>
-                      <input type="number" class="form-control" required name="discountAmount">
+                      <input type="number" class="form-control" required name="discountAmount" >
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -69,11 +69,11 @@
                     <div class="col-lg-5 col-md-7 col-sm-7">
                       <label class="form-label">Product Description</label>
                       <textarea class="form-control" id="productDescription" required name="description" rows="2"
-                        cols="50"></textarea>
+                        cols="50" ></textarea>
                     </div>
                     <div class="col-lg-4 col-md-7 col-sm-7">
                       <label class="form-label">Product Quantity</label>
-                      <input type="number" class="form-control" required name="quantity">
+                      <input type="number" class="form-control" required name="quantity" >
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -83,6 +83,209 @@
             </div>
 
 
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="fw-semibold mb-4">Product List</h1>
+           
+            <!-- table begin -->
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Product List</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Id</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Product name</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Image</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Category</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Price</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Discount</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Description</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Review</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Edit</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Delete</h6>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <span style="color: white;">
+                        <%= a=1 %>
+                      </span>
+                      <% pro.forEach(products=> { %>
+
+                        <tr>
+                          <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">
+                              <%= a %>
+                            </h6>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.productName %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0 fs-4"><img src="/admin/user/products/<&= products.image &>" alt=""
+                                width="50"></h6>
+
+                            <!-- <p class="mb-0 fw-normal">
+                              <%= products.image %>
+                            </p> -->
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.category %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0 fs-4">
+                              <%= products.price %>
+                            </h6>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.discountAmount %>
+                            </p>
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.description %>
+                            </p>
+
+                          </td>
+                          <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">
+                              <%= products.review %>
+                            </p>
+
+                          </td>
+                          <td class="border-bottom-0">
+                           <button class="btn btn-primary" type="submit"
+                        onclick="editUser('<%= products._id %>')">Edit</button>&nbsp;
+                          </td>
+                          <td class="border-bottom-0">
+                            <form action="/deletepro" method="POST">
+                              <input type="hidden" value="<%= products._id %>" name="proId">
+                              <button class="btn btn-danger" type="submit"><span>Delete</span></button>
+                            </form>
+                            
+                          </td>
+                        </tr>
+
+                        
+            <!-- model -->
+
+            
+
+            <!-- .............................................. -->
+
+            <div class="modal fade" id="exampleModal<%= products._id %>" tabindex="-1"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-fullscreen p-5 " style="height: 80%;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <h1 class="fw-semibold mb-4">Product</h1>
+                    <form method="POST" action="/updatedoc" enctype="multipart/form-data">
+                      <div class="row mb-3">
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                          <label class="form-label">Product Name</label>
+                          <input type="text" class="form-control" required name="productName" value="<%= products.productName %>">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                          <label class="form-label">Product Image</label>
+                          <input type="file" class="form-control" required name="image">
+                          <!-- <img src="../images/products/" alt="" width="100"> -->
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                          <label class="form-label">Category</label>
+                          <select id="disabledSelect" class="form-select" required name="category" value="<%= products.category %>">
+                            <option>Category select</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="veg">veg</option>
+                            <option value="juice">juice</option>
+                            <option value="groceries">groceries</option>
+                            <option value="cosmetics">cosmetics</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-4 col-md-8 col-sm-8">
+                          <label class="form-label">Product Price</label>
+                          <input type="number" class="form-control" required name="price" value="<%= products.price %>">
+                        </div>
+                        <div class="col-lg-4 col-md-8 col-sm-8">
+                          <label class="form-label">Discount price</label>
+                          <input type="number" class="form-control" required name="discountAmount" value="<%= products.discountAmount %>">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-lg-3 col-md-5 col-sm-5">
+                          <label class="form-label">review</label>
+                          <textarea class="form-control" id="productDescription" name="review" rows="2"
+                            cols="50" value="<%= products.review %>"></textarea>
+                        </div>
+                        <div class="col-lg-5 col-md-7 col-sm-7">
+                          <label class="form-label">Product Description</label>
+                          <textarea class="form-control" id="productDescription" required name="description" rows="2"
+                            cols="50" ></textarea>
+                        </div>
+                        <div class="col-lg-4 col-md-7 col-sm-7">
+                          <label class="form-label">Product Quantity</label>
+                          <input type="number" class="form-control" required name="quantity" >
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="hidden" value="<%= products._id %>" name="proId">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ////////////////// -->
+
+           
+                        <% a++ %>
+                          <% }); %>
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- table end -->
           </div>
         </div>
       </div>
@@ -98,3 +301,4 @@
 </body>
 
 </html>
+

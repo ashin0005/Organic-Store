@@ -1,4 +1,5 @@
 const express = require('express');
+const { fstat } = require('fs');
 const router = express.Router();
 
 
@@ -12,9 +13,9 @@ router.get('/admin-dashboard', (req, res) => {
 // router.get('/admin-product', (req, res) => {
 //     res.render('admin/admin-product');
 // });
-router.get('/admin-addproduct', (req, res) => {
-    res.render('admin/admin-addproduct');
-});
+// router.get('/admin-addproduct', (req, res) => {
+//     res.render('admin/admin-addproduct');
+// });
 // router.get('/admin-order', (req, res) => {
 //     res.render('admin/admin-order');
 // });
@@ -33,5 +34,10 @@ router.get('/admin-register', (req, res) => {
 router.get('/admin-login', (req, res) => {
     res.render('admin/admin-login');
 });
+// router.get('/admin-editProduct', (req, res) => {
+//     res.render('admin/admin-editProduct');
+// });
+
+
 
 module.exports = router;

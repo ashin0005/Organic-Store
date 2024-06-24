@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 
 
 const app = express();
-const port = 7000;
+const port = 2000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -39,20 +39,21 @@ app.use(express.static('public'));
 const adminRoutes = require('./route/adminRoutes');
 const userRoutes = require('./route/userRoutes');
 const { register } = require('module');
+const router = require('./route/adminRoutes');
 
 // use routes 
 app.use('/admin', adminRoutes);
 app.use('/', userRoutes);
 
 
-app.get('/admin/admin-product', async (req, res) => {
+app.get('/admin/admin-addproduct', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('organicStore');
         const collection = db.collection('products');
 
         const pro = await collection.find().toArray();
-        res.render('admin/admin-product', { pro });
+        res.render('admin/admin-addproduct', { pro });
     } finally {
         await client.close();
     }
@@ -256,6 +257,21 @@ app.post('/addcate', Cupload.single('image'), async (req, res) => {
 
 
 // Set up multer middleware for handling file uploads
+
+
+app.get('/addproduct', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('organicStore');
+        const collection = db.collection('products');
+
+        const pro = await collection.find().toArray();
+        res.render('admin/admin-addproduct', { pro });
+    } finally {
+        await client.close();
+    }
+});
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/admin/images/products'); // Specify the destination folder for uploaded images
@@ -471,6 +487,8 @@ app.post('/addToCart', async (req, res) => {
 
 
 
+
+
 // display cart
 
 app.get('/cart', async (req, res) => {
@@ -487,6 +505,37 @@ app.get('/cart', async (req, res) => {
     }
 });
 
+// delete
+
+
+
+app.post('/deletepro', async (req, res) => {
+    try {
+        // Get the productId from the form data
+        const proId = req.body.proId;
+
+        // Connect to the MongoDB database
+        const Client = await MongoClient.connect('mongodb://localhost:27017');
+
+        const db = Client.db('organicStore');
+        const collection = db.collection('products');
+
+        const products = await collection.findOne({
+            _id: new ObjectId(proId)
+        });
+
+        // Delete the product record with the specified proId
+        const result = await collection.deleteOne({
+            _id: new ObjectId(proId)
+        });
+
+        // Redirect after successful deletion
+        return res.redirect('/user/index');
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return res.status(500).send("An error occurred while deleting the product record.");
+    }
+});
 
 
 
@@ -494,3 +543,7 @@ app.get('/cart', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+
+
+
+
